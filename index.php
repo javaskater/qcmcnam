@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/signin.css">
 </head>
 <body class="text-center">
+<div class="container">
     <?php
         if (isset($_GET['error']) && !empty($_GET['error'])) {
             $typeErreur = $_GET['error'];
@@ -21,7 +22,8 @@
             echo "</div>";
         }
     ?>
-    <form class="form-signin" method="POST" action="authentification.php">
+    <div class="row">
+    <form class="form-signin" method="POST" action="accueil.php">
         <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Authentifiez vous!</h1>
         <label for="inputEmail" class="sr-only">adresse E-Mail</label>
@@ -36,5 +38,7 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Authentification</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
     </form>
+    </div>
+    </div>
 </body>
 </html>
