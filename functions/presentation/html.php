@@ -9,7 +9,7 @@ function afficheEntete($nom){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" >
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css" >
 
     <title>Bonjour <?php echo $nom ?></title>
   </head>
@@ -20,8 +20,8 @@ function afficheFin(){
 ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery/jquery-3.6.0.js"></script>
-    <script src="js/bootstrap/bootstrap.js"></script>
+    <script src="../js/jquery/jquery-3.6.0.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
   </body>
 </html>
 <?php

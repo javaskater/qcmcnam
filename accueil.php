@@ -6,11 +6,11 @@ if (isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["password"
     $email=$_POST["email"];
     $password=$_POST["password"];
     $conn=openconnection();
-    $sql = "select nom, motdepasse, email,statut from personne where email='$email' and motdepasse='$password'";
+    $sql = "select id, nom, motdepasse, email,statut from personne where email='$email' and motdepasse='$password'";
     //echo $sql;
     $result = mysqli_query($conn,$sql) or die("Query failed");
     if ($line = mysqli_fetch_assoc($result)){
-        $utilisateur = array('nom' => $line[nom],
+        $utilisateur = array('id' => $line[id], 'nom' => $line[nom],
     'email' => $line[email], 'statut' => $line[statut]);
         //on met l'utilisateur authentifié en session
         session_start();
@@ -18,9 +18,9 @@ if (isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["password"
 
         afficheEntete($line[nom]);
         if ($line[statut] == "professeur"){
-            headerProfesseur();
+            headerProfesseur($utilisateur);
         } else { // c'est un élève
-            headerEleve();
+            headerEleve($utilisateur);
         }
         afficheFin();
     } else {
