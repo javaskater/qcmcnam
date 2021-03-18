@@ -13,10 +13,10 @@ function headerProfesseur($utilisateur){
         <a class="nav-link" href="#"><?php echo $utilisateur['nom'];?><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="themes/gererThemes.php">Themes</a>
+        <a class="nav-link" href="http://localhost/qcmcnam/themes/gererThemes.php">Themes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gererQuestions.php">Questions Réponses</a>
+        <a class="nav-link" href="http://localhost/qcmcnam/questions/gererQuestions.php">Questions Réponses</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
