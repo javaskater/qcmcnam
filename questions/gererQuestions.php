@@ -85,10 +85,39 @@ if (isset($utilisateur) && !empty($utilisateur) && $utilisateur[statut] == "prof
 	</div> <!-- fin du Row -->
 </div> <!-- fin du Container -->
 <script type="text/javascript">
+
+function byId(id){
+	return document.getElementById(id);
+}
+
+//Trouvé sur https://www.informit.com/articles/article.aspx?p=2164575&seqNum=9
+function getCookie(name) {
+  var cArr = document.cookie.split(';');
+  for(var i=0;i < cArr.length;i++) {
+    var cookie = cArr[i].split("=",2);
+    cookie[0] = cookie[0].replace(/^\s+/,"");
+    if (cookie[0] == name){ return cookie[1]; }
+  }
+}
+
+
+
+function setCookie(name, value, days) {
+  var date = new Date();
+  date.setTime(date.getTime()+(days*24*60*60*1000));
+  var expires = "; expires="+date.toGMTString();
+  document.cookie = name + "=" + value +
+                    expires + "; path=/";
+}
+
+
 function addFields(){
     // Number of inputs to create
     var number = document.getElementById("choixNombreReponses").value;
-    // Container <div> where dynamic content will be placed
+    addANumberOfFields(number);
+}
+function addANumberOfFields(number){
+	    // Container <div> where dynamic content will be placed
     var container = document.getElementById("reponses");
     // Clear previous contents of the container
     while (container.hasChildNodes()) {
@@ -135,7 +164,50 @@ function addFields(){
     }
     container.appendChild(divrb);
 }
-addFields();
+function pageEnErreur(){
+	var enErreur = false;
+	var queryString = window.location.search;
+	if (queryString.length > 0){
+		var urlParams = new URLSearchParams(queryString);
+		var error = urlParams.get('error');
+		if (error != null && error.length > 0){
+			enErreur = true;
+		}
+	}
+	return enErreur;
+}
+if (pageEnErreur()){
+	var jsonString = decodeURIComponent(getCookie('postValues'));
+    console.log("le String Cookie vaut:"+jsonString);
+    var lesValeurs = JSON.parse(jsonString)
+    console.log(lesValeurs);
+    addANumberOfFields(lesValeurs['choixNombreReponses']);
+    //On prerempli les champs pour permettre la correction du formulaire
+    var qInputElt = byId('texteQuestion');
+    qInputElt.value = lesValeurs['texteQuestion'];
+    var themeElt = byId('selectTheme');
+    themeElt.value = lesValeurs['selectTheme'];
+    var nbChoixElt = byId('choixNombreReponses');
+    nbChoixElt.value = lesValeurs['choixNombreReponses'];
+    for (var i = 0; i < lesValeurs['choixNombreReponses']; i++){
+    	var repId = 'r'+i;
+    	var eltRep = byId(repId);
+    	eltRep.value = lesValeurs[repId];
+    }
+    if (lesValeurs['bonneReponse'] != undefined){
+    	var valeur = lesValeurs['bonneReponse'];
+    	for (var i = 0; i < lesValeurs['choixNombreReponses']; i++){
+        	var rchoixId = 'rb'+i;
+        	var eltChoix = byId(rchoixId);
+        	if (eltChoix.value == valeur){
+        		eltChoix.checked = true;
+        	}
+        }
+    }
+} else {
+	addFields();
+	console.log("tout va bien rien à faire");
+}
 </script>
 <?php
     afficheFin();

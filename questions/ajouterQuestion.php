@@ -27,8 +27,11 @@ if(!isset($_POST['bonneReponse']) || empty($_POST['bonneReponse'])){
     $enErreur = true;
 }
 if ($enErreur){
+    setcookie("postValues", json_encode($_POST));//on renvoie les valeurs POST au formulaire
     header('Location:http://localhost/qcmcnam/questions/gererQuestions.php?error='.$error);
 } else {
+    unset($_COOKIE['postValues']);
+    setcookie('postValues', '', time() - 3600, '/'); // empty value and old timestamp
     $idTheme = $_POST['selectTheme'];
     session_start();
     $idAuteur = $_SESSION['utilisateur']['id'];
