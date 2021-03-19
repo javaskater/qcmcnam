@@ -45,7 +45,42 @@ if (isset($utilisateur) && !empty($utilisateur) && $utilisateur[statut] == "prof
             </form>
 		</div>
 		<div class="col-12 col-md-6 col-xl-10">
-		<!-- TODO mettre ici les questions déjà enregistrées -->
+		<?php
+		if (isset($_GET['error']) && !empty($_GET['error'])) {
+		    echo "<div class=\"alert alert-danger\">";
+		    echo "<strong>Erreur!</strong>";
+		    $listeErreur = explode ( ";" , $_GET['error']);
+		    $msg = "";
+		    for ($i=0; $i < count($listeErreur); $i++){
+		        $erreur = $listeErreur[$i];
+		        if ($erreur == "qvide"){
+		            $msg = $msg."le texte de la question ne peut être vide";
+		        } else if ($erreur == "rvide"){
+		            if (strlen(msg) > 0){
+		                $msg = $msg."<br />";
+		            }
+		            $msg = $msg."le texte des réponses ne peut être vide";
+		        } else if ($erreur == "rbvide"){
+		            if (strlen(msg) > 0){
+		                $msg = $msg."<br />";
+		            }
+		            $msg = $msg."il vous faut choisir une réponse";
+		        }
+		    }
+            echo $msg;
+            echo "</div>";
+		}
+		$maConn = openconnection();
+		$sql = "select q.id as id, p.nom as nom, q.texte as texte from question q, personne p where q.idAuteur = p.id order by q.id";
+		//echo "$sql";
+		$result = mysqli_query($maConn,$sql) or die("requete lecture questions en erreur");
+		echo "<ul class=\"list-group\">";
+		while ($line = mysqli_fetch_assoc($result)){
+		    echo "<li class=\"list-group-item\"><a href=\"editQuesion.php?id=".$line[id]."\">".$line[texte]." (auteur:".$line[nom].")</li>";
+		}
+		echo "</ul>";
+		fermerConnection($result, $maConn);
+        ?>
 		</div>
 	</div> <!-- fin du Row -->
 </div> <!-- fin du Container -->
