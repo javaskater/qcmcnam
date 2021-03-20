@@ -23,7 +23,7 @@ function headerProfesseur($utilisateur){
           QCM
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Créer un QCM</a>
+          <a class="dropdown-item" href="http://localhost/qcmcnam/qcm/creerqcm.php">Créer un QCM</a>
           <a class="dropdown-item" href="#">Publier un QCM</a>
         </div>
       </li>

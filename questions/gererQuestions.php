@@ -131,7 +131,7 @@ function addANumberOfFields(number){
         //Crée un label element
         var label = document.createElement("label");
         label.setAttribute("for", "r"+i);
-        var txtlabel = document.createTextNode("Reponse "+(i+1))
+        var txtlabel = document.createTextNode("Reponse "+(i+1));
         label.appendChild(txtlabel);
         // Crée un <input> element!
         var input = document.createElement("input");
