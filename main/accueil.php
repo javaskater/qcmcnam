@@ -1,7 +1,7 @@
 <?php
-require_once("functions/mysql/database.php");
-require_once("functions/presentation/html.php");
-require_once("functions/presentation/navbar.php");
+require_once("../functions/mysql/database.php");
+require_once("../functions/presentation/html.php");
+require_once("../functions/presentation/navbar.php");
 if (isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["password"])){
     $email=$_POST["email"];
     $password=$_POST["password"];
