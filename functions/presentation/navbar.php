@@ -56,7 +56,7 @@ function headerEleve($utilisateur){
         <a class="nav-link" href="#"><?php echo $utilisateur['nom'];?><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">QCM</a>
+        <a class="nav-link" href="http://localhost/qcmcnam/qcmeleve/choixqcm.php">QCM</a>
       </li>
       </li>
       <li class="nav-item">
