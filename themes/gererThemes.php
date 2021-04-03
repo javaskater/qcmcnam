@@ -5,8 +5,8 @@ require_once("../functions/presentation/navbar.php");
 
 session_start();
 $utilisateur = $_SESSION['utilisateur'];
-if (isset($utilisateur) && !empty($utilisateur) && $utilisateur[statut] == "professeur"){
-    afficheEntete($utilisateur[nom]);
+if (isset($utilisateur) && !empty($utilisateur) && $utilisateur['statut'] == "professeur"){
+    afficheEntete($utilisateur['nom']);
     headerProfesseur($utilisateur);
 }
 ?>
@@ -36,14 +36,14 @@ if (isset($_GET['error']) && !empty($_GET['error'])) {
         echo "le label ne peut être vide";
     }
     echo "</div>";
-}elseif (isset($utilisateur) && !empty($utilisateur) && $utilisateur[statut] == "professeur"){
+}elseif (isset($utilisateur) && !empty($utilisateur) && $utilisateur['statut'] == "professeur"){
     $conn=openconnection();
     $sql = "select id, label, description from themes order by id";
     //echo $sql;
     $result = mysqli_query($conn,$sql) or die("Query failed");
     echo "<ul class=\"list-group\">";
     while ($line = mysqli_fetch_assoc($result)){
-        echo "<li class=\"list-group-item\"><a href=\"editTheme.php?id=".$line[id]."\">".$line[label]."</li>";
+        echo "<li class=\"list-group-item\"><a href=\"editTheme.php?id=".$line['id']."\">".$line['label']."</li>";
     }
     echo "</ul>";
     fermerConnection($result, $conn);

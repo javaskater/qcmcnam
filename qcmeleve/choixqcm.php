@@ -5,8 +5,8 @@ require_once("../functions/presentation/navbar.php");
 
 session_start();
 $utilisateur = $_SESSION['utilisateur'];
-if (isset($utilisateur) && !empty($utilisateur) && $utilisateur[statut] == "eleve"){
-    afficheEntete($utilisateur[nom]);
+if (isset($utilisateur) && !empty($utilisateur) && $utilisateur['statut'] == "eleve"){
+    afficheEntete($utilisateur['nom']);
     headerEleve($utilisateur);
 ?>
 <div class="container-fluid">

@@ -6,8 +6,8 @@ require_once("rechercherThemes.php");
 
 session_start();
 $utilisateur = $_SESSION['utilisateur'];
-if (isset($utilisateur) && !empty($utilisateur) && $utilisateur[statut] == "professeur"){
-    afficheEntete($utilisateur[nom]);
+if (isset($utilisateur) && !empty($utilisateur) && $utilisateur['statut'] == "professeur"){
+    afficheEntete($utilisateur['nom']);
     headerProfesseur($utilisateur);
     $lesThemes = retourneThemes();
     //TODO renvoyer vers gererThemes quand pas de thème entré
@@ -76,7 +76,7 @@ if (isset($utilisateur) && !empty($utilisateur) && $utilisateur[statut] == "prof
 		$result = mysqli_query($maConn,$sql) or die("requete lecture questions en erreur");
 		echo "<ul class=\"list-group\">";
 		while ($line = mysqli_fetch_assoc($result)){
-		    echo "<li class=\"list-group-item\"><a href=\"editQuesion.php?id=".$line[id]."\">".$line[texte]." (auteur:".$line[nom].")</li>";
+		    echo "<li class=\"list-group-item\"><a href=\"editQuesion.php?id=".$line['id']."\">".$line['texte']." (auteur:".$line['nom'].")</li>";
 		}
 		echo "</ul>";
 		fermerConnection($result, $maConn);

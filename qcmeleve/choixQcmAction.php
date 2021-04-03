@@ -7,8 +7,8 @@ require_once("../functions/presentation/navbar.php");
 session_start();
 $utilisateur = $_SESSION['utilisateur'];
 $qcmId=0;
-if (isset($utilisateur) && !empty($utilisateur) && $utilisateur[statut] == "eleve"){
-    afficheEntete($utilisateur[nom]);
+if (isset($utilisateur) && !empty($utilisateur) && $utilisateur['statut'] == "eleve"){
+    afficheEntete($utilisateur['nom']);
     headerEleve($utilisateur);
     if (isset($_POST['qcmChoisi']) && !empty($_POST['qcmChoisi'])){
         $qcmId = $_POST['qcmChoisi'];

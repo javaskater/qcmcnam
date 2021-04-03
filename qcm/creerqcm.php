@@ -6,8 +6,8 @@ require_once("rechercherQuestions.php");
 
 session_start();
 $utilisateur = $_SESSION['utilisateur'];
-if (isset($utilisateur) && !empty($utilisateur) && $utilisateur[statut] == "professeur"){
-    afficheEntete($utilisateur[nom]);
+if (isset($utilisateur) && !empty($utilisateur) && $utilisateur['statut'] == "professeur"){
+    afficheEntete($utilisateur['nom']);
     headerProfesseur($utilisateur);
     ?>
 <div class="container-fluid">
