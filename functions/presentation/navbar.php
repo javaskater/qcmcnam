@@ -32,8 +32,7 @@ function headerProfesseur($utilisateur){
           Notes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarNotesDropdown">
-          <a class="dropdown-item" href="#">Consulter Notes</a>
-          <a class="dropdown-item" href="#">Publier une note</a>
+          <a class="dropdown-item" href="http://localhost/qcmcnam/notes/gererNotes.php">Gérer Notes</a>
         </div>
       </li>    </ul>
   </div>

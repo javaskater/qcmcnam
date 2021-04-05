@@ -24,6 +24,3 @@ function afficheFin(){
     <script src="../js/bootstrap/bootstrap.js"></script>
   </body>
 </html>
-<?php
-}
-?>
