@@ -145,6 +145,9 @@ function addANumberOfFields(number){
     }
     //le Div pour les radio boutons qui indiquent la réponse vraie
     container.appendChild(div);
+    var titrerb = document.createElement("h4");
+    titrerb.appendChild(document.createTextNode("Choisissez la bonne réponse"));
+    container.appendChild(titrerb);
     var divrb = document.createElement("div");
     divrb.className = "form-group";
     for (var i=0;i<number;i++){
@@ -157,7 +160,7 @@ function addANumberOfFields(number){
     	radio.className = "form-control";
     	var label = document.createElement("label");
         label.setAttribute("for", "rb"+i);
-        var txtlabel = document.createTextNode("choix "+(i+1))
+        var txtlabel = document.createTextNode("reponse "+(i+1))
         label.appendChild(txtlabel);
         divrb.appendChild(label);
         divrb.appendChild(radio);

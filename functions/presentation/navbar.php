@@ -34,7 +34,13 @@ function headerProfesseur($utilisateur){
         <div class="dropdown-menu" aria-labelledby="navbarNotesDropdown">
           <a class="dropdown-item" href="http://localhost/qcmcnam/notes/gererNotes.php">Gérer Notes</a>
         </div>
-      </li>    </ul>
+      </li>    
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="../logout.php">
+        <button type="submit" class="btn btn-default btn-sm">
+        <i class="fas fa-sign-out-alt"></i> Log out
+        </button>
+    </form>
   </div>
 </nav>
 
@@ -59,9 +65,14 @@ function headerEleve($utilisateur){
       </li>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Notes</a>
+        <a class="nav-link" href="http://localhost/qcmcnam/notes/consulterNotes.php">Notes</a>
       </li>
     </ul>
+    <form class="form-inline my-2 my-lg-0" action="../logout.php">
+        <button type="submit" class="btn btn-default btn-sm">
+        <i class="fas fa-sign-out-alt"></i> Log out
+        </button>
+    </form>
   </div>
 </nav>
 
