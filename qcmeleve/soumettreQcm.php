@@ -1,8 +1,8 @@
 <?php
 require_once("../functions/mysql/database.php");
 session_start();
-var_dump($_SESSION);
-var_dump($_POST);
+//var_dump($_SESSION);
+//var_dump($_POST);
 $note = 0;
 $nbQuestions = 0;
 if (isset($_POST['reponses']) && !empty($_POST['reponses'])){
@@ -24,7 +24,7 @@ if (isset($_POST['reponses']) && !empty($_POST['reponses'])){
 $maConn = openconnection();
 //TODO verifier qu'il n'y a pas déjà une note pour ce QCM et cet élève
 $sql = "insert into notes (idPersonne, idQcm, note, publie) values (".$_SESSION['utilisateur']['id'].",".$_POST['idQcm'].",".$note.",0)";
-echo $sql;
+//echo $sql;
 $result = mysqli_query($maConn,$sql) or die("requete  Ajout d'une note en erreur");
 fermerConnection($result, $maConn);
 ?>

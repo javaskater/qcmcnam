@@ -1,6 +1,6 @@
 CREATE TABLE `qcmcnam`.`personne` ( `id` INT NOT NULL AUTO_INCREMENT , 
 `nom` VARCHAR(100) NOT NULL , `motdepasse` VARCHAR(100) NOT NULL , 
-`email` VARCHAR(200) NOT NULL , `statut` VARCHAR(20) NOT NULL , PRIMARY KEY (`id`)) 
+`email` VARCHAR(200) NOT NULL , `statut` VARCHAR(20) NOT NULL ,  `urlImage` VARCHAR(255), PRIMARY KEY (`id`)) 
 ENGINE = InnoDB;
 
 INSERT INTO `personne` (`id`, `nom`, `motdepasse`, `email`, `statut`) VALUES (NULL, 'Mena', 'research', 'jpm@jpmena.eu', 'professeur');

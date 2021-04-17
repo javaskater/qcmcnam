@@ -12,3 +12,12 @@
 * Traitements de fichiers image des professeurs et images des élèves
 * Envoyer les notes par mail à l'étudiant
 * Ecrire dans un fichier texte
+
+# 14/04/2021
+
+## propositions de l'animateur
+
+* compléter le profil
+* veut on passer en MVC il y a plein de ressources sur le net!
+* sympa ajouter les élèves à des classes un même QCM peut être donné à une classe!
+* les notes par catégorie, un petit diagramme de répartitions de notes
