@@ -29,6 +29,23 @@ if (isset($utilisateur) && !empty($utilisateur) && $utilisateur['statut'] == "pr
                             echo " checked";
                         }
                         echo " />";
+                        $sqlClasses = "select id, nom from classe";
+                        $resultClasses = mysqli_query($maConn,$sqlClasses) or die("requete recupere classe en erreur");
+                        echo "<div class=\"form-group\">";
+                        echo "<label for=\"classesSelect\">Sélectionnez une ou des classe(s)</label>";
+                        echo "<select multiple class=\"form-control\" name=\"s".$line['id']."[]\" id=\"s".$line['id']."\">";
+                        while ($lineClasses = mysqli_fetch_assoc($resultClasses)){
+                            echo "<option value=".$lineClasses['id'];
+                            $sqlQcmClasses = "select idClasse from qcmclasse where idQcm = ".$line['id'];
+                            $resultQcmClasses = mysqli_query($maConn,$sqlQcmClasses) or die("requete recupere  qcm classe en erreur");
+                            while ($linetQcmClasses = mysqli_fetch_assoc($resultQcmClasses)){
+                                if ($linetQcmClasses['idClasse'] == $lineClasses['id']){
+                                    echo " selected ";
+                                }
+                            } 
+                            echo ">".$lineClasses['nom']."</option>";
+                        }
+                        echo "</select>";
                         echo "</li>";
                     }
                     $casesaCocher=substr($casesaCocher, 0, -1);

@@ -15,8 +15,18 @@
          $sql = "update qcm set publie = 0 where id=".$laCase;
      }
      $result = mysqli_query($maConn,$sql) or die("requete publish QCM en erreur");
+     $selectName = 's'.$laCase;
+     //$laCase est l'idQcm les données de $POST[]
+     $sqldelete = "delete from qcmclasse where idQcm = ".$laCase;
+     $result = mysqli_query($maConn,$sqldelete) or die("requete supprimer QcmClasse en erreur");
+     $arrLesClasses = $_POST[$selectName];
+     foreach($arrLesClasses as $uneClasse){
+        $sqlinsert = "insert into qcmclasse (idQcm, idClasse) values (".$laCase.",".$uneClasse.")";
+        $result = mysqli_query($maConn,$sqlinsert) or die("requete insérer QcmClasse en erreur");
+     }//var_dump($_POST[$selectName]);
  }
- fermerConnection($result, $maConn);
+ 
+ mysqli_close($maConn);
  header('Location:http://localhost/qcmcnam/qcm/publishqcm.php');
  
  

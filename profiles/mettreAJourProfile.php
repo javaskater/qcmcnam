@@ -36,9 +36,10 @@
         session_start();
         //var_dump($_SESSION);
         $utilisateurId = $_SESSION['utilisateur']['id'];
+        $utilisateurClasseId = $_POST['classe'];
         $maConn = openconnection();
         //TODO verifier qu'il n'y a pas déjà une note pour ce QCM et cet élève
-        $sql = "update personne set urlImage='".$uploadfile."' where id=".$utilisateurId;
+        $sql = "update personne set urlImage='".$uploadfile."', idClasse=".$utilisateurClasseId." where id=".$utilisateurId;
         //echo $sql;
         $result = mysqli_query($maConn,$sql) or die("mis à jour de l'avatar en erreur");
         mysqli_close($maConn);

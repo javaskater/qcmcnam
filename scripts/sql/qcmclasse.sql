@@ -1,0 +1,2 @@
+CREATE TABLE `qcmcnam`.`qcmclasse` ( `id` INT NOT NULL AUTO_INCREMENT , `idQcm` INT NOT NULL , `idClasse` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
+INSERT INTO `qcmclasse` (`id`, `idQcm`, `idClasse`) VALUES (NULL, '10', '1'), (NULL, '11', '1'); 

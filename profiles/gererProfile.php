@@ -35,6 +35,32 @@
     ?>
         <h4>Profil de <?php echo $utilisateur['email']; ?></h4>
         <form enctype="multipart/form-data"action="mettreAJourProfile.php" method="POST">
+        <div class="form-group">
+<?php
+$maConn = openconnection();
+if ($utilisateur['statut'] == "eleve"){
+    $idClasseUtilisateur = "";
+    echo "<label for=\"classe\">Sélectionnez une classe</label>";
+    $sql = "select idClasse from personne where id=".$utilisateur['id'];
+    $resultClasseUtilisateur = mysqli_query($maConn,$sql) or die("recherche de la clase de l'utilisateur en erreur");
+    if ($lineClasseUtilisateur =  mysqli_fetch_assoc($resultClasseUtilisateur)){
+        $idClasseUtilisateur = $lineClasseUtilisateur['idClasse'];
+        //echo "la classe de l'utilisateur est ".$idClasseUtilisateur;
+    }
+    echo "<select id=\"classe\" name=\"classe\" class=\"form-control\">";
+    $sql="select * from classe order by id";
+    $resultClasses = mysqli_query($maConn,$sql) or die("recherche des classes en erreur");
+    while ($lineClasses =  mysqli_fetch_assoc($resultClasses)){
+        echo "<option value=".$lineClasses['id'];
+        if (!empty($idClasseUtilisateur) && $idClasseUtilisateur == $lineClasses['id']){
+            echo " selected "; 
+        }
+        echo ">".$lineClasses['nom']."</option>";
+    }
+    echo "</select>";
+ }
+?>
+        </div>    
             <div class="form-group">
                 <label for="userfile">Image à uploader</label>
                 <input type="file" name="userfile" class="form-control" id="userfile" aria-describedby="userImage" >
@@ -45,7 +71,6 @@
         </form>
 <?php
     $utilisateurId = $_SESSION['utilisateur']['id'];
-    $maConn = openconnection();
     //TODO verifier qu'il n'y a pas déjà une note pour ce QCM et cet élève
     $sql = "select urlImage from personne where id=".$utilisateurId;
     //echo $sql;

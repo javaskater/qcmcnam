@@ -27,7 +27,7 @@ if (isset($utilisateur) && !empty($utilisateur) && $utilisateur['statut'] == "el
     <ul class="list-group" id="questionsQcm">
     <?php 
         $maConn = openconnection();
-        $sql = "select * from qcm where publie=1 order by id";
+        $sql = "select q.id, q.libelle from qcm q, qcmclasse qc, personne p where q.publie=1 and qc.idQcm = q.id and qc.idClasse = p.idClasse and p.id=".$utilisateur['id']." order by q.id";
         //echo $sql;
         $result = mysqli_query($maConn,$sql) or die("requete choix  QCM a traiter en erreur");
         while ($line = mysqli_fetch_assoc($result)){
